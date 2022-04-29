@@ -5,7 +5,7 @@ on:
 
 #on:
 #  schedule:
-#    - cron: '0 18 * * 1-5'
+#    - cron: '0 22 * * 1-5'
 
 jobs:
 
@@ -25,6 +25,9 @@ jobs:
 
       - name: Generate Release APK
         run: ./gradlew assembleRelease
+
+       - name: Setup tmate session
+         uses: mxschmitt/action-tmate@v3
 
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
