@@ -86,14 +86,14 @@ android {
     pickFirst 'lib/arm64-v8a/libc++_shared.so'
     pickFirst 'lib/armeabi-v7a/libc++_shared.so'
   }
-  signingConfigs {
-    release {
-      keyAlias nyplKeyAlias
-      keyPassword nyplKeyPassword
-      storeFile file("$rootDir/release.jks")
-      storePassword nyplStorePassword
-    }
-  }
+//  signingConfigs {
+//    release {
+//      keyAlias nyplKeyAlias
+//      keyPassword nyplKeyPassword
+//      storeFile file("$rootDir/release.jks")
+//      storePassword nyplStorePassword
+//    }
+//  }
   buildTypes {
     debug {
       ndk { abiFilters 'x86', 'arm64-v8a', 'armeabi-v7a' }
