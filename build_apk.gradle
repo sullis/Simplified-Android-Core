@@ -29,29 +29,29 @@ def nyplStorePassword =
 /**
  * This task is run before a release build is assembled.
  */
-task preReleaseCheck(group: 'NYPL') {
-  description =
-    'Verify signing information is present before generating a release build.'
-
-  doLast {
-    if (!nyplKeyStore.exists()) {
-      throw new GradleException(
-        "Keystore file '${nyplKeyStore}' must exist to sign release builds")
-    }
-    if (!nyplKeyAlias) {
-      throw new GradleException(
-        "'org.librarysimplified.keyAlias' must be defined to sign release builds")
-    }
-    if (!nyplKeyPassword) {
-      throw new GradleException(
-        "'org.librarysimplified.keyPassword' must be defined to sign release builds")
-    }
-    if (!nyplStorePassword) {
-      throw new GradleException(
-        "'org.librarysimplified.storePassword' must be defined to sign release builds")
-    }
-  }
-}
+//task preReleaseCheck(group: 'NYPL') {
+//  description =
+//    'Verify signing information is present before generating a release build.'
+//
+//  doLast {
+//    if (!nyplKeyStore.exists()) {
+//      throw new GradleException(
+//        "Keystore file '${nyplKeyStore}' must exist to sign release builds")
+//    }
+//    if (!nyplKeyAlias) {
+//      throw new GradleException(
+//        "'org.librarysimplified.keyAlias' must be defined to sign release builds")
+//    }
+//    if (!nyplKeyPassword) {
+//      throw new GradleException(
+//        "'org.librarysimplified.keyPassword' must be defined to sign release builds")
+//    }
+//    if (!nyplStorePassword) {
+//      throw new GradleException(
+//        "'org.librarysimplified.storePassword' must be defined to sign release builds")
+//    }
+//  }
+//}
 
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
@@ -107,15 +107,15 @@ android {
   lintOptions {
     checkReleaseBuilds false
   }
-  applicationVariants.all { variant ->
-    if (variant.buildType.name == 'release') {
-      def preBuildTask =
-        tasks.findByName("pre${variant.name.capitalize()}Build")
-      if (preBuildTask) {
-        preBuildTask.dependsOn preReleaseCheck
-      }
-    }
-  }
+//  applicationVariants.all { variant ->
+//    if (variant.buildType.name == 'release') {
+//      def preBuildTask =
+//        tasks.findByName("pre${variant.name.capitalize()}Build")
+//      if (preBuildTask) {
+//        preBuildTask.dependsOn preReleaseCheck
+//      }
+//    }
+//  }
 }
 
 /*
